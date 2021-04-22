@@ -1,5 +1,5 @@
 compile:
-	g++ -o main scheduling.cpp FCFS.cpp
+	g++ -o main scheduling.cpp FCFS.cpp algorithm.cpp
 
 test_run:
 	./main < in

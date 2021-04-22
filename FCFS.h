@@ -1,17 +1,15 @@
 #include <iostream>
 #include <algorithm>
 #include "process.h"
+#include "algorithm.h"
 
 #ifndef FCFS_H_
 #define FCFS_H_
 
-class FCFS {
-  private:
+class FCFS : public Algorithm{
+  protected:
     Process *prcs;
-    int n_prcs,
-        total_waiting_time = 0,
-        total_response_time = 0,
-        total_turnaround_time = 0;
+    int n_prcs;
 
   public:
     FCFS(Process prcs[], int n_prcs);

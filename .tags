@@ -1,0 +1,32 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+FCFS	FCFS.cpp	/^FCFS::FCFS(Process in_prcs[], int in_n) {$/;"	f	class:FCFS
+FCFS	FCFS.h	/^class FCFS {$/;"	c
+FCFS_H_	FCFS.h	6;"	d
+PROCESS_H_	process.h	2;"	d
+Process	process.h	/^typedef struct process Process;$/;"	t	typeref:struct:process
+arrival_time	process.h	/^      arrival_time,$/;"	m	struct:process
+burst_time	process.h	/^      burst_time,$/;"	m	struct:process
+calculateRT	FCFS.cpp	/^void FCFS::calculateRT() {$/;"	f	class:FCFS
+calculateTAT	FCFS.cpp	/^void FCFS::calculateTAT() {$/;"	f	class:FCFS
+calculateWT	FCFS.cpp	/^void FCFS::calculateWT() {$/;"	f	class:FCFS
+compareArrival	FCFS.cpp	/^bool FCFS::compareArrival(Process p1, Process p2) {$/;"	f	class:FCFS
+comparePID	FCFS.cpp	/^bool FCFS::comparePID(Process p1, Process p2) {$/;"	f	class:FCFS
+completation_time	process.h	/^      completation_time;$/;"	m	struct:process
+execute	FCFS.cpp	/^void FCFS::execute() {$/;"	f	class:FCFS
+main	scheduling.cpp	/^int main() {$/;"	f
+n_prcs	FCFS.h	/^    int n_prcs,$/;"	m	class:FCFS
+p_id	process.h	/^  int p_id,$/;"	m	struct:process
+prcs	FCFS.h	/^    Process *prcs;$/;"	m	class:FCFS
+process	process.h	/^struct process {$/;"	s
+response_time	process.h	/^      response_time,$/;"	m	struct:process
+start_time	process.h	/^      start_time,$/;"	m	struct:process
+total_response_time	FCFS.h	/^        total_response_time = 0,$/;"	m	class:FCFS
+total_turnaround_time	FCFS.h	/^        total_turnaround_time = 0;$/;"	m	class:FCFS
+total_waiting_time	FCFS.h	/^        total_waiting_time = 0,$/;"	m	class:FCFS
+turnaround_time	process.h	/^      turnaround_time,$/;"	m	struct:process
+waiting_time	process.h	/^      waiting_time,$/;"	m	struct:process
