@@ -1,22 +1,24 @@
 #include <iostream>
+#include <queue>
 #include <algorithm>
 #include "process.h"
 #include "algorithm.h"
 
-#ifndef FCFS_H_
-#define FCFS_H_
+#ifndef PRIORITY_H_
+#define PRIORITY_H_
+#define QUANTUM 1
 
-class FCFS : public Algorithm{
+class PRIORITY : public Algorithm{
   protected:
     Process *prcs;
     int n_prcs;
 
   public:
-    FCFS(Process prcs[], int n_prcs);
+    PRIORITY(Process prcs[], int n_prcs);
     void execute();
     void calculateWT();
     void calculateTAT();
     void calculateRT();
-};
 
+};
 #endif

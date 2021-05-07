@@ -8,9 +8,9 @@ struct process {
       turnaround_time,
       response_time,
       start_time,
-      completation_time;
+      completation_time,
+      priority;
 };
 
 typedef struct process Process;
-
 #endif

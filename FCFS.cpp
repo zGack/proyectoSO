@@ -9,7 +9,7 @@ FCFS::FCFS(Process in_prcs[], int in_n) {
 
 void FCFS::execute() {
   int i;
-  cout << "executing FCFS" << endl;
+  cout << "executing FIRST COME FIRST SERVE" << endl;
 
   sort(prcs,prcs + n_prcs, compareArrival);
 
@@ -69,9 +69,9 @@ void FCFS::execute() {
     cout<<"\t"<<prcs[i].response_time<<"\t"<<"\n"<<endl;
   }
 
-  printf("\nAVG TAT: %d\n",total_turnaround_time/n_prcs);
-  printf("AVG WT: %d\n",total_waiting_time/n_prcs);
-  printf("AVG RT: %d\n",total_response_time/n_prcs);
+  printf("\nAVG TAT: %.2f\n",total_turnaround_time/n_prcs);
+  printf("AVG WT: %.2f\n",total_waiting_time/n_prcs);
+  printf("AVG RT: %.2f\n",total_response_time/n_prcs);
 }
 
 void FCFS::calculateTAT() {
@@ -108,10 +108,4 @@ void FCFS::calculateRT() {
   }
 }
 
-bool FCFS::compareArrival(Process p1, Process p2) {
-  return p1.arrival_time < p2.arrival_time;
-}
 
-bool FCFS::comparePID(Process p1, Process p2) {
-  return p1.p_id < p2.p_id;
-}

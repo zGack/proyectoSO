@@ -65,3 +65,15 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   }
   printf("\n");
 }
+
+bool Algorithm::compareArrival(Process p1, Process p2) {
+  return p1.arrival_time < p2.arrival_time;
+}
+
+bool Algorithm::comparePID(Process p1, Process p2) {
+  return p1.p_id < p2.p_id;
+}
+
+bool Algorithm::compareST(Process p1, Process p2) {
+  return p1.start_time < p2.start_time;
+}
