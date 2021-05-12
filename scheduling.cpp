@@ -30,10 +30,10 @@ int main() {
   }
 
   //initializate scheduling algorithms
-  //FCFS fcfs_sche(prcs, n_prcs);
-  //fcfs_sche.execute();
-  PRIORITY prio_sche(prcs, n_prcs);
-  prio_sche.execute();
+  FCFS fcfs_sche(prcs, n_prcs, context_switch);
+  fcfs_sche.execute();
+  PRIORITY prio_sche(prcs, n_prcs, context_switch);
+  //prio_sche.execute();
 
   return 0;
 }

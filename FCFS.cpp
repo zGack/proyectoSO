@@ -2,9 +2,10 @@
 
 using namespace std;
 
-FCFS::FCFS(Process in_prcs[], int in_n) {
+FCFS::FCFS(Process in_prcs[], int in_n, int c_s) {
   prcs = in_prcs;
   n_prcs = in_n;
+  context_switch = c_s;
 }
 
 void FCFS::execute() {
@@ -77,13 +78,13 @@ void FCFS::execute() {
 void FCFS::calculateTAT() {
   int i;
 
-  prcs[0].start_time = prcs[0].arrival_time;
+  prcs[0].start_time = prcs[0].arrival_time + context_switch;
   prcs[0].completation_time = prcs[0].start_time + prcs[0].burst_time;
   prcs[0].turnaround_time = prcs[0].completation_time - prcs[0].arrival_time;
   total_turnaround_time += prcs[0].turnaround_time;
 
   for (i = 1;i < n_prcs; i++) {
-    prcs[i].start_time = max(prcs[i-1].completation_time,prcs[i].arrival_time);
+    prcs[i].start_time = max(prcs[i-1].completation_time,prcs[i].arrival_time) + context_switch;
     prcs[i].completation_time = prcs[i].start_time + prcs[i].burst_time;
     prcs[i].turnaround_time = prcs[i].completation_time - prcs[i].arrival_time;
     total_turnaround_time += prcs[i].turnaround_time;

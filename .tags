@@ -6,12 +6,12 @@
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ALGORITHM_H_	algorithm.h	5;"	d
 Algorithm	algorithm.h	/^class Algorithm {$/;"	c
-FCFS	FCFS.cpp	/^FCFS::FCFS(Process in_prcs[], int in_n) {$/;"	f	class:FCFS
+FCFS	FCFS.cpp	/^FCFS::FCFS(Process in_prcs[], int in_n, int c_s) {$/;"	f	class:FCFS
 FCFS	FCFS.h	/^class FCFS : public Algorithm{$/;"	c
 FCFS_H_	FCFS.h	7;"	d
 GANTT_H_	gantt.h	5;"	d
 Gantt	gantt.h	/^class Gantt {$/;"	c
-PRIORITY	PRIORITY_NONP.cpp	/^PRIORITY::PRIORITY(Process in_prcs[], int in_n) {$/;"	f	class:PRIORITY
+PRIORITY	PRIORITY_NONP.cpp	/^PRIORITY::PRIORITY(Process in_prcs[], int in_n, int c_s) {$/;"	f	class:PRIORITY
 PRIORITY	PRIORITY_NONP.h	/^class PRIORITY : public Algorithm{$/;"	c
 PRIORITY_H_	PRIORITY_NONP.h	8;"	d
 PROCESS_H_	process.h	2;"	d
@@ -26,6 +26,7 @@ compareArrival	algorithm.cpp	/^bool Algorithm::compareArrival(Process p1, Proces
 comparePID	algorithm.cpp	/^bool Algorithm::comparePID(Process p1, Process p2) {$/;"	f	class:Algorithm
 compareST	algorithm.cpp	/^bool Algorithm::compareST(Process p1, Process p2) {$/;"	f	class:Algorithm
 completation_time	process.h	/^      completation_time,$/;"	m	struct:process
+context_switch	algorithm.h	/^    int context_switch;$/;"	m	class:Algorithm
 execute	FCFS.cpp	/^void FCFS::execute() {$/;"	f	class:FCFS
 execute	PRIORITY_NONP.cpp	/^void PRIORITY::execute() {$/;"	f	class:PRIORITY
 main	scheduling.cpp	/^int main() {$/;"	f

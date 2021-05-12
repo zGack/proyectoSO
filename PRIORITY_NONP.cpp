@@ -3,9 +3,10 @@
 
 using namespace std;
 
-PRIORITY::PRIORITY(Process in_prcs[], int in_n) {
+PRIORITY::PRIORITY(Process in_prcs[], int in_n, int c_s) {
   prcs = in_prcs;
   n_prcs = in_n;
+  context_switch = c_s;
 }
 
 void PRIORITY::execute() {
@@ -42,7 +43,7 @@ void PRIORITY::execute() {
     // PROCESS FOUND IN THE CURRENT TIME
     if (current_pid != -1) { 
 
-      prcs[current_pid].start_time = current_time;
+      prcs[current_pid].start_time = current_time + context_switch;
       prcs[current_pid].completation_time = prcs[current_pid].start_time + prcs[current_pid].burst_time;
       // TURNAROUND
       prcs[current_pid].turnaround_time = prcs[current_pid].completation_time - prcs[current_pid].arrival_time;

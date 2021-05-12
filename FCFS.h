@@ -12,7 +12,7 @@ class FCFS : public Algorithm{
     int n_prcs;
 
   public:
-    FCFS(Process prcs[], int n_prcs);
+    FCFS(Process prcs[], int n_prcs, int c_s);
     void execute();
     void calculateWT();
     void calculateTAT();

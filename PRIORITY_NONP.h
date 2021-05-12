@@ -14,7 +14,7 @@ class PRIORITY : public Algorithm{
     int n_prcs;
 
   public:
-    PRIORITY(Process prcs[], int n_prcs);
+    PRIORITY(Process prcs[], int n_prcs, int c_s);
     void execute();
     void calculateWT();
     void calculateTAT();

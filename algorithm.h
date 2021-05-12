@@ -6,6 +6,7 @@
 
 class Algorithm {
   protected:
+    int context_switch;
     double total_turnaround_time = 0,
         total_waiting_time = 0,
         total_response_time = 0;
