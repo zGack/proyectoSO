@@ -4,12 +4,12 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   //TO DO FIX LAST CT
   int i, j, prev_ct = context_switch, context_flag = 1;
 
-  printf("\tGANTT CHART\t\n");
   printf(" ");
   for (i=0;i < n_prcs;i++) {
-    printf("--- ");
+    printf("--- "); // CONTEXT SWITCH
+
     if (p[i].start_time != prev_ct) {
-      printf("--- ");
+      printf("--- "); // CPU WAITING FOR PROCESS
     }
     for (j = 0;j < p[i].burst_time;j++)printf("--");
     prev_ct = p[i].completation_time + context_switch;
@@ -20,9 +20,9 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   prev_ct = context_switch;
 
   for (i=0;i<n_prcs;i++) {
-    printf(" C |");
+    printf(" C |"); // CONTEXT
     if (p[i].start_time != prev_ct) {
-      printf(" X |");
+      printf(" X |"); // CPU WAITING FOR PROCESS
     }
     for(j=0; j<p[i].burst_time - 1; j++) printf(" ");
     printf("P%d", p[i].p_id);
@@ -35,9 +35,9 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   prev_ct = context_switch;
 
   for(i=0; i<n_prcs; i++) {
-    printf("--- ");
+    printf("--- "); // CONTEXT
     if (p[i].start_time != prev_ct) {
-      printf("--- ");
+      printf("--- "); // CPU WAITING FOR PROCESS
     }
     for(j=0; j < p[i].burst_time; j++) printf("--");
     printf(" ");
@@ -50,12 +50,12 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   //printf("0");
   for(i=0; i<n_prcs; i++) {
     if(prev_ct > 9)printf("\b"); // backspace : remove 1 space
-    printf("%d   ", prev_ct);
+    printf("%d   ", prev_ct); // CONTEXT
     prev_ct += context_switch;
 
     if (p[i].start_time != prev_ct) {
       if(prev_ct > 9)printf("\b"); // backspace : remove 1 space
-      printf("%d   ", prev_ct);
+      printf("%d   ", prev_ct); // CPU WAITING FOR CONTEXT
     }
     if(p[i].start_time > 9) printf("\b"); // backspace : remove 1 space
     printf("%d", p[i].start_time);

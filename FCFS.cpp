@@ -14,47 +14,9 @@ void FCFS::execute() {
 
   sort(prcs,prcs + n_prcs, compareArrival);
 
-  /*printf("\n");
-  for (i = 0;i < n_prcs; i++) {
-    printf("P[%d] BURST: %d ARRIVAL: %d\n",prcs[i].p_id, prcs[i].burst_time, prcs[i].arrival_time);
-  }*/
-
   calculateTAT();
   calculateWT();
   calculateRT();
-
-  printGantt(prcs, n_prcs);
-
-  /*cout << "\nturnaround" << endl;
-  printf("\n");
-  for (i = 0;i < n_prcs;i++) {
-    printf("P[%d] TAT: %d\n",prcs[i].p_id, prcs[i].turnaround_time);
-  }
-
-  cout << "\nwaiting" << endl;
-  for (i = 0;i < n_prcs;i++) {
-    printf("P[%d] WT: %d\n",prcs[i].p_id, prcs[i].waiting_time);
-  }
-
-  cout << "\nresponse" << endl;
-  for (i = 0;i < n_prcs;i++) {
-    printf("P[%d] RT: %d\n",prcs[i].p_id, prcs[i].response_time);
-  }
-
-  cout << "\ncompletation" << endl;
-  for (i = 0;i < n_prcs;i++) {
-    printf("P[%d] CT: %d\n",prcs[i].p_id, prcs[i].completation_time);
-  }
-
-  cout << "\nstart" << endl;
-  for (i = 0;i < n_prcs;i++) {
-    printf("P[%d] ST: %d\n",prcs[i].p_id, prcs[i].start_time);
-  }
-
-  printf("\n");
-  for (i = 0;i < n_prcs; i++) {
-    printf("P[%d] BURST: %d ARRIVAL: %d\n",prcs[i].p_id, prcs[i].burst_time, prcs[i].arrival_time);
-  }*/
 
   sort(prcs, prcs + n_prcs, comparePID);
 
@@ -69,6 +31,9 @@ void FCFS::execute() {
     cout<<"\t"<<prcs[i].waiting_time;
     cout<<"\t"<<prcs[i].response_time<<"\t"<<"\n"<<endl;
   }
+
+  sort(prcs,prcs + n_prcs, compareArrival);
+  printGantt(prcs, n_prcs);
 
   printf("\nAVG TAT: %.2f\n",total_turnaround_time/n_prcs);
   printf("AVG WT: %.2f\n",total_waiting_time/n_prcs);
@@ -108,5 +73,4 @@ void FCFS::calculateRT() {
     total_response_time += prcs[i].response_time;
   }
 }
-
 
