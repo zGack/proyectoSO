@@ -1,5 +1,5 @@
 compile:
-	g++ -o main scheduling.cpp FCFS.cpp algorithm.cpp PRIORITY_NONP.cpp
+	g++ -pthread -o main scheduling.cpp FCFS.cpp algorithm.cpp PRIORITY_NONP.cpp SJF.cpp
 
 test_run:
 	./main < in

@@ -10,7 +10,9 @@ FCFS::FCFS(Process in_prcs[], int in_n, int c_s) {
 
 void FCFS::execute() {
   int i;
-  cout << "executing FIRST COME FIRST SERVE" << endl;
+
+  printf("executing FCFS\n");
+  printf("\nContext switch units: %d\n", context_switch);
 
   sort(prcs,prcs + n_prcs, compareArrival);
 
@@ -35,9 +37,10 @@ void FCFS::execute() {
   sort(prcs,prcs + n_prcs, compareArrival);
   printGantt(prcs, n_prcs);
 
-  printf("\nAVG TAT: %.2f\n",total_turnaround_time/n_prcs);
-  printf("AVG WT: %.2f\n",total_waiting_time/n_prcs);
-  printf("AVG RT: %.2f\n",total_response_time/n_prcs);
+  printf("\nAVG TURNAROUND TIME: %.2f\n",total_turnaround_time/n_prcs);
+  printf("AVG WAITING TIME: %.2f\n",total_waiting_time/n_prcs);
+  printf("AVG RESPONSE TIME: %.2f\n",total_response_time/n_prcs);
+  
 }
 
 void FCFS::calculateTAT() {

@@ -13,6 +13,7 @@ class Algorithm {
 
   public:
     void printGantt(Process p[], int n_prcs);
+    void printGanttV2(Process p[], int n_prcs);
     static bool compareArrival(Process p1, Process p2);
     static bool comparePID(Process p1, Process p2);
     static bool comparePriority(Process p1, Process p2);

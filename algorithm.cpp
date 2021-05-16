@@ -6,7 +6,7 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
 
   printf(" ");
   for (i=0;i < n_prcs;i++) {
-    printf("--- "); // CONTEXT SWITCH
+    if(context_switch > 0)printf("--- "); // CONTEXT SWITCH
 
     if (p[i].start_time != prev_ct) {
       printf("--- "); // CPU WAITING FOR PROCESS
@@ -20,7 +20,7 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   prev_ct = context_switch;
 
   for (i=0;i<n_prcs;i++) {
-    printf(" C |"); // CONTEXT
+    if(context_switch > 0)printf(" C |"); // CONTEXT
     if (p[i].start_time != prev_ct) {
       printf(" X |"); // CPU WAITING FOR PROCESS
     }
@@ -35,7 +35,7 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   prev_ct = context_switch;
 
   for(i=0; i<n_prcs; i++) {
-    printf("--- "); // CONTEXT
+    if(context_switch > 0)printf("--- "); // CONTEXT
     if (p[i].start_time != prev_ct) {
       printf("--- "); // CPU WAITING FOR PROCESS
     }
@@ -50,7 +50,7 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   //printf("0");
   for(i=0; i<n_prcs; i++) {
     if(prev_ct > 9)printf("\b"); // backspace : remove 1 space
-    printf("%d   ", prev_ct); // CONTEXT
+    if(context_switch > 0)printf("%d   ", prev_ct); // CONTEXT
     prev_ct += context_switch;
 
     if (p[i].start_time != prev_ct) {

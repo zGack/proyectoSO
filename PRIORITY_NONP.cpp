@@ -13,9 +13,12 @@ void PRIORITY::execute() {
   int i, completed = 0, current_time = 0, current_pid, max_priority;
   //priority_queue<int> ready_queue; 
 
-  cout << "executing PRIORITY" << endl;
+  printf("executing PRIORITY\n");
+  printf("Context switch units: %d\n", context_switch);
 
   //sort(prcs,prcs + n_prcs, compareArrival);
+  
+  printf("n_prcs %d\n",n_prcs);
 
   while (completed != n_prcs) {
     current_pid = -1;
@@ -63,6 +66,7 @@ void PRIORITY::execute() {
     }
   }
 
+
   sort(prcs, prcs + n_prcs, comparePID);
 
   cout<<"\nPID\t"<<"PRI\t"<<"AT\t"<<"BT\t"<<"ST\t"<<"CT\t"<<"TAT\t"<<"WT\t"<<"RT\t"<<"\n"<<endl;
@@ -83,7 +87,8 @@ void PRIORITY::execute() {
   // TO DO: PRINT GANTT CHART WITH ROUND ROBIN APROACH
   printGantt(prcs, n_prcs);
 
-  printf("\nAVG TAT: %.2f\n",total_turnaround_time/n_prcs);
-  printf("AVG WT: %.2f\n",total_waiting_time/n_prcs);
-  printf("AVG RT: %.2f\n",total_response_time/n_prcs);
+  printf("\nAVG TURNAROUND TIME: %.2f\n",total_turnaround_time/n_prcs);
+  printf("AVG WAITING TIME: %.2f\n",total_waiting_time/n_prcs);
+  printf("AVG RESPONSE TIME: %.2f\n",total_response_time/n_prcs);
+
 }
