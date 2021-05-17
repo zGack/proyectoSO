@@ -71,12 +71,19 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
 
 
 void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {
+  int prev_ct = 0 + context_switch;
+
   printf("Context switch units: %d\n\n",context_switch);
   printf("PID\tSTART\tCOMPLETATION\n");
+
   for (int i = 0; i < n_prcs; i++) {
+    if (p[i]->start_time != prev_ct) {
+      printf("X\t%d\t%d\n", prev_ct, p[i]->start_time);
+    }
     printf("%d\t",p[i]->p_id);
     printf("%d\t",p[i]->start_time);
     printf("%d\n",p[i]->completation_time);
+    prev_ct = p[i]->completation_time;
   }
 }
 
