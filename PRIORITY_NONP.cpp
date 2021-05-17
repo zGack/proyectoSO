@@ -16,13 +16,13 @@ void PRIORITY::execute() {
 
   while (completed != n_prcs) {
     current_pid = -1;
-    max_priority = -1;
+    max_priority = 999;
 
     for (i = 0; i < n_prcs; i++) {
       // CHECK IF PROCESS IS NOT COMPLETED
       if (prcs[i]->arrival_time <= current_time && prcs[i]->completation_time == -1) {
         //GET PROCESS WITH THE MAX PRIORITY IN THE CURRENT TIME
-        if ( prcs[i]->priority > max_priority) {
+        if ( prcs[i]->priority < max_priority) {
           current_pid = i;
           max_priority = prcs[i]->priority;
         }

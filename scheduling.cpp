@@ -55,6 +55,7 @@ int main() {
 
   //printf("Context switch units: ",&context_switch);
   cin >> context_switch;
+
   Process *prcs = new Process;
 
   for (i = 0;i < n_prcs; i++) {

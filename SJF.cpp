@@ -38,19 +38,20 @@ void SJF :: calculateWT(){
                 //cout << s <<" "<< t << endl;
                 minburst = rt[j];
                 s = j;
-                t = t + chan; // APLICAMOS EL CAMBIO DE CONTEXTO
-                tCambios[cambios] = t;
-                nCambios[cambios] = s;
-                cambios++;
+                
+                
                 repe++;
                 check = true;
                 
             }
         }
-        
-
-        //cout<< s << " " << t << endl;
-
+        if(repe > 0){
+          t = t + chan; // APLICAMOS EL CAMBIO DE CONTEXTO
+          tCambios[cambios] = t;
+          nCambios[cambios] = s;
+          cambios++;
+        }
+        repe = 0;
 
         if(prcs[s]->start_time == 0){
             prcs[s]->start_time = t;
