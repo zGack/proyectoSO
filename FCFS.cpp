@@ -52,7 +52,7 @@ void FCFS::calculateTAT() {
   total_turnaround_time += prcs[0]->turnaround_time;
 
   for (i = 1;i < n_prcs; i++) {
-    prcs[i]->start_time = max(prcs[i-1]->completation_time,prcs[i]->arrival_time) + context_switch;
+    prcs[i]->start_time = max(prcs[i-1]->completation_time, prcs[i]->arrival_time) + context_switch;
     prcs[i]->completation_time = prcs[i]->start_time + prcs[i]->burst_time;
     prcs[i]->turnaround_time = prcs[i]->completation_time - prcs[i]->arrival_time;
     total_turnaround_time += prcs[i]->turnaround_time;

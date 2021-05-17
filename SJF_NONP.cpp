@@ -1,37 +1,37 @@
 // priority non preemtive
-#include "PRIORITY_NONP.h"
+#include "SJF_NONP.h"
 
 using namespace std;
 
-PRIORITY::PRIORITY(vector <Process*> in_prcs, int in_n, int c_s) {
+SJF2::SJF2(vector <Process*> in_prcs, int in_n, int c_s) {
   prcs = in_prcs;
   n_prcs = in_n;
   context_switch = c_s;
 }
 
-void PRIORITY::execute() {
-  int i, completed = 0, current_time = 0, current_pid, max_priority;
+void SJF2::execute() {
+  int i, completed = 0, current_time = 0, current_pid, min_burst;
 
-  printf("\n======== executing PRIORITY ========\n");
+  printf("\n======== executing SJF non preemtive ========\n");
 
   while (completed != n_prcs) {
     current_pid = -1;
-    max_priority = -1;
+    min_burst = 9999;
 
     for (i = 0; i < n_prcs; i++) {
       // CHECK IF PROCESS IS NOT COMPLETED
       if (prcs[i]->arrival_time <= current_time && prcs[i]->completation_time == -1) {
-        //GET PROCESS WITH THE MAX PRIORITY IN THE CURRENT TIME
-        if ( prcs[i]->priority > max_priority) {
+        //GET PROCESS WITH THE MIN BURST IN THE CURRENT TIME
+        if ( prcs[i]->burst_time < min_burst) {
           current_pid = i;
-          max_priority = prcs[i]->priority;
+          min_burst = prcs[i]->burst_time;
         }
 
         // IF TOW PROCESS HAS SAME PRIORITY SELECT WHICH HAS LESS AT
-        if ( prcs[i]->priority == max_priority) {
+        if ( prcs[i]->burst_time == min_burst) {
           if (prcs[i]->arrival_time < prcs[current_pid]->arrival_time) {
             current_pid = i;
-            max_priority = prcs[i]->priority;
+            min_burst = prcs[i]->burst_time;
           }
         }
       }
@@ -60,9 +60,10 @@ void PRIORITY::execute() {
     }
   }
 
-  sort(prcs.begin(), prcs.end(), compareST);
 
+  sort(prcs.begin(), prcs.end(), compareST);
   printGanttV2(prcs, n_prcs);
+
 
   sort(prcs.begin(), prcs.end(), comparePID);
 
@@ -79,6 +80,8 @@ void PRIORITY::execute() {
     cout<<"\t"<<prcs[i]->response_time<<"\t"<<"\n"<<endl;
   }
 
+
+  // TO DO: PRINT GANTT CHART WITH ROUND ROBIN APROACH
   //printGantt(prcs, n_prcs);
 
   printf("\nAVG TURNAROUND TIME: %.2f\n",total_turnaround_time/n_prcs);

@@ -83,7 +83,7 @@ void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {
     printf("%d\t",p[i]->p_id);
     printf("%d\t",p[i]->start_time);
     printf("%d\n",p[i]->completation_time);
-    prev_ct = p[i]->completation_time;
+    prev_ct = p[i]->completation_time + context_switch;
   }
 }
 

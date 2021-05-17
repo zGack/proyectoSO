@@ -15,8 +15,12 @@ PRIORITY_H_	PRIORITY_NONP.h	9;"	d
 PROCESS_H_	process.h	2;"	d
 Process	process.h	/^typedef struct process Process;$/;"	t	typeref:struct:process
 QUANTUM	PRIORITY_NONP.h	10;"	d
+QUANTUM	SJF_NONP.h	10;"	d
 SJF	SJF.cpp	/^SJF::SJF(vector <Process*> in_prcs, int in_n, int ctx) {$/;"	f	class:SJF
 SJF	SJF.h	/^class SJF : public Algorithm{  $/;"	c
+SJF2	SJF_NONP.cpp	/^SJF2::SJF2(vector <Process*> in_prcs, int in_n, int c_s) {$/;"	f	class:SJF2
+SJF2	SJF_NONP.h	/^class SJF2 : public Algorithm{$/;"	c
+SJF2_H_	SJF_NONP.h	9;"	d
 SJF_H_	SJF.h	10;"	d
 arrival_time	process.h	/^      arrival_time,$/;"	m	struct:process
 burst_time	process.h	/^      burst_time,$/;"	m	struct:process
@@ -38,6 +42,7 @@ copyProcess	scheduling.cpp	/^void copyProcess(vector <Process*> th_ps, vector <P
 execute	FCFS.cpp	/^void FCFS::execute() {$/;"	f	class:FCFS
 execute	PRIORITY_NONP.cpp	/^void PRIORITY::execute() {$/;"	f	class:PRIORITY
 execute	SJF.cpp	/^void SJF :: execute()$/;"	f	class:SJF
+execute	SJF_NONP.cpp	/^void SJF2::execute() {$/;"	f	class:SJF2
 fcfsTHREAD	scheduling.cpp	/^void fcfsTHREAD(vector <Process*> p, int n_p, int c_s) {$/;"	f
 main	scheduling.cpp	/^int main() {$/;"	f
 nCambios	SJF.cpp	/^int nCambios[2000];$/;"	v
@@ -45,10 +50,12 @@ nCambios	SJF.h	/^        nCambios[2000],$/;"	m	class:SJF
 n_prcs	FCFS.h	/^    int n_prcs;$/;"	m	class:FCFS
 n_prcs	PRIORITY_NONP.h	/^    int n_prcs;$/;"	m	class:PRIORITY
 n_prcs	SJF.h	/^    int n_prcs,$/;"	m	class:SJF
+n_prcs	SJF_NONP.h	/^    int n_prcs;$/;"	m	class:SJF2
 p_id	process.h	/^  int p_id,$/;"	m	struct:process
 prcs	FCFS.h	/^    vector <Process*> prcs;$/;"	m	class:FCFS
 prcs	PRIORITY_NONP.h	/^    vector <Process*> prcs;$/;"	m	class:PRIORITY
 prcs	SJF.h	/^    vector <Process*> prcs;$/;"	m	class:SJF
+prcs	SJF_NONP.h	/^    vector <Process*> prcs;$/;"	m	class:SJF2
 printGantt	algorithm.cpp	/^void Algorithm::printGantt(Process p[], int n_prcs) {$/;"	f	class:Algorithm
 printGanttSJF	SJF.cpp	/^void SJF::printGanttSJF(vector <Process*> p, int n_prcs) {$/;"	f	class:SJF
 printGanttV2	algorithm.cpp	/^void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {$/;"	f	class:Algorithm

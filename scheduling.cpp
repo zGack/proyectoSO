@@ -7,7 +7,7 @@
 #include "process.h"
 #include "FCFS.h"
 #include "PRIORITY_NONP.h"
-#include "SJF.h"
+#include "SJF_NONP.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ void fcfsTHREAD(vector <Process*> p, int n_p, int c_s) {
 }
 
 void sjfTHREAD(vector <Process*> p, int n_p, int c_s) {
-  SJF sjf_sche(p, n_p, c_s);
+  SJF2 sjf_sche(p, n_p, c_s);
   sjf_sche.execute();
 }
 
