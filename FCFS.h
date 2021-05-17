@@ -1,18 +1,21 @@
 #include <iostream>
 #include <algorithm>
+#include <vector>
 #include "process.h"
 #include "algorithm.h"
 
 #ifndef FCFS_H_
 #define FCFS_H_
 
+using namespace std;
+
 class FCFS : public Algorithm{
   protected:
-    Process *prcs;
+    vector <Process*> prcs;
     int n_prcs;
 
   public:
-    FCFS(Process prcs[], int n_prcs, int c_s);
+    FCFS(vector <Process*> prcs, int n_prcs, int c_s);
     void execute();
     void calculateWT();
     void calculateTAT();

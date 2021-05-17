@@ -1,7 +1,9 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
 #include <pthread.h>
+#include <vector>
 #include "process.h"
 #include "FCFS.h"
 #include "PRIORITY_NONP.h"
@@ -9,90 +11,72 @@
 
 using namespace std;
 
-typedef struct p_args {
-  Process *processes;
-  int n_prcs;
-  int context_switch;
-} args;
-
-void *fcfsTHREAD(void *tmp) {
-  args *prcs = (args *) tmp;
-  FCFS fcfs_sche(prcs->processes, prcs->n_prcs, prcs->context_switch);
+void fcfsTHREAD(vector <Process*> p, int n_p, int c_s) {
+  FCFS fcfs_sche(p, n_p, c_s);
   fcfs_sche.execute();
-
-  pthread_exit(0);
 }
 
-void *sjfTHREAD(void *tmp) {
-  args *prcs = (args *) tmp;
-  SJF sjf_sche(prcs->processes, prcs->n_prcs, prcs->context_switch);
+void sjfTHREAD(vector <Process*> p, int n_p, int c_s) {
+  SJF sjf_sche(p, n_p, c_s);
   sjf_sche.execute();
-
-  pthread_exit(0);
 }
 
-void *priorityTHREAD(void *tmp) {
-  args *prcs = (args *) tmp;
-  PRIORITY prio_sche(prcs->processes, prcs->n_prcs, prcs->context_switch);
+void priorityTHREAD(vector <Process *> p, int n_p, int c_s) {
+  PRIORITY prio_sche(p, n_p, c_s);
   prio_sche.execute();
+}
 
-  pthread_exit(0);
+// ASSIGN UNIQUE PROCESS FOR EACH THREAD SUBROUTINE
+void copyProcess(vector <Process*> th_ps, vector <Process*> *th_pd) {
+  for (vector <Process*>::iterator it = th_ps.begin(); it != th_ps.end(); it++) {
+    Process *prcs = new Process;
+    prcs->p_id = (*it)->p_id;
+    prcs->burst_time = (*it)->burst_time;
+    prcs->arrival_time = (*it)->arrival_time;
+    prcs->priority = (*it)->priority;
+    prcs->start_time = (*it)->start_time;
+    prcs->completation_time = (*it)->completation_time;
+    prcs->turnaround_time = (*it)->turnaround_time;
+    prcs->waiting_time = (*it)->waiting_time;
+    prcs->response_time = (*it)->response_time;
+    th_pd->push_back(prcs);
+  }
 }
 
 int main() {
   int i, n_prcs, context_switch;
   pthread_t fcsf_th, sjf_th, prio_th;
-  Process *prcs;
+  thread threads[3];
+  vector <Process*> p_th1, p_th2, p_th3;
+
 
   //printf("Number of process: ");
   cin >> n_prcs;
 
-  prcs = (Process *)malloc(n_prcs * sizeof(Process));
-
   //printf("Context switch units: ",&context_switch);
   cin >> context_switch;
+  Process *prcs = new Process;
 
   for (i = 0;i < n_prcs; i++) {
-    prcs[i].p_id = i + 1;
-    //printf("\nP[%d] BURST: ",i+1);
-    cin >> prcs[i].burst_time >> prcs[i].arrival_time >> prcs[i].priority;
-    //printf("BT: %d AT: %d PRIORITY %d\n", prcs[i].burst_time, prcs[i].arrival_time, prcs[i].priority);
-    prcs[i].completation_time = -1;
-    //printf("P[%d] ARRIVAL TIME: ",i+1);
+    prcs->p_id = i + 1;
+    cin >> prcs->burst_time >> prcs->arrival_time >> prcs->priority;
+    prcs->completation_time = -1;
+
+    p_th1.push_back(prcs);
+    prcs = new Process;
   }
 
-  args tmp[3];
-  tmp[0].processes = prcs;
-  tmp[0].n_prcs = n_prcs;
-  tmp[0].context_switch = context_switch;
-  tmp[1] = tmp[0];
-  tmp[2] = tmp[0];
+  copyProcess(p_th1, &p_th2);
+  copyProcess(p_th1, &p_th3);
 
-  if (pthread_create(&fcsf_th, NULL, &fcfsTHREAD, &tmp[0]) != 0) {
-    printf("FCFS THREAD CREATION ERROR");
-    return -1;
-  }
+  threads[0] = thread(fcfsTHREAD, p_th1, n_prcs, context_switch);
+  threads[0].join();
 
-  pthread_join(fcsf_th, NULL);
+  threads[1] = thread(priorityTHREAD, p_th2, n_prcs, context_switch);
+  threads[1].join();
 
-  if (pthread_create(&sjf_th, NULL, &sjfTHREAD, &tmp[1]) != 0) {
-    printf("SJF THREAD CREATION ERROR");
-    return -1;
-  }
-
-  pthread_join(sjf_th, NULL);
-
-  if (pthread_create(&prio_th, NULL, &priorityTHREAD, &tmp[2]) != 0) {
-    printf("PRIORITY THREAD CREATION ERROR");
-    return -1;
-  }
-
-  pthread_join(prio_th, NULL);
-
-  //initializate scheduling algorithms
-  /*FCFS fcfs_sche(prcs, n_prcs, context_switch);
-  PRIORITY prio_sche(prcs, n_prcs, context_switch);
-  SJF sjf_sche(prcs, n_prcs, context_switch);*/
+  threads[2] = thread(sjfTHREAD, p_th3, n_prcs, context_switch);
+  threads[2].join();
 
   return 0;
 }

@@ -69,14 +69,25 @@ void Algorithm::printGantt(Process p[], int n_prcs) {
   printf("\n");
 }
 
-bool Algorithm::compareArrival(Process p1, Process p2) {
-  return p1.arrival_time < p2.arrival_time;
+
+void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {
+  printf("Context switch units: %d\n\n",context_switch);
+  printf("PID\tSTART\tCOMPLETATION\n");
+  for (int i = 0; i < n_prcs; i++) {
+    printf("%d\t",p[i]->p_id);
+    printf("%d\t",p[i]->start_time);
+    printf("%d\n",p[i]->completation_time);
+  }
 }
 
-bool Algorithm::comparePID(Process p1, Process p2) {
-  return p1.p_id < p2.p_id;
+bool Algorithm::compareArrival(Process *p1, Process *p2) {
+  return p1->arrival_time < p2->arrival_time;
 }
 
-bool Algorithm::compareST(Process p1, Process p2) {
-  return p1.start_time < p2.start_time;
+bool Algorithm::comparePID(Process *p1, Process *p2) {
+  return p1->p_id < p2->p_id;
+}
+
+bool Algorithm::compareST(Process *p1, Process *p2) {
+  return p1->start_time < p2->start_time;
 }

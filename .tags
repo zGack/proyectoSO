@@ -4,21 +4,20 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ALGORITHM_H_	algorithm.h	5;"	d
+ALGORITHM_H_	algorithm.h	6;"	d
 Algorithm	algorithm.h	/^class Algorithm {$/;"	c
-FCFS	FCFS.cpp	/^FCFS::FCFS(Process in_prcs[], int in_n, int c_s) {$/;"	f	class:FCFS
+FCFS	FCFS.cpp	/^FCFS::FCFS(vector <Process*> in_prcs, int in_n, int c_s) {$/;"	f	class:FCFS
 FCFS	FCFS.h	/^class FCFS : public Algorithm{$/;"	c
-FCFS_H_	FCFS.h	7;"	d
-PRIORITY	PRIORITY_NONP.cpp	/^PRIORITY::PRIORITY(Process in_prcs[], int in_n, int c_s) {$/;"	f	class:PRIORITY
+FCFS_H_	FCFS.h	8;"	d
+PRIORITY	PRIORITY_NONP.cpp	/^PRIORITY::PRIORITY(vector <Process*> in_prcs, int in_n, int c_s) {$/;"	f	class:PRIORITY
 PRIORITY	PRIORITY_NONP.h	/^class PRIORITY : public Algorithm{$/;"	c
-PRIORITY_H_	PRIORITY_NONP.h	8;"	d
+PRIORITY_H_	PRIORITY_NONP.h	9;"	d
 PROCESS_H_	process.h	2;"	d
 Process	process.h	/^typedef struct process Process;$/;"	t	typeref:struct:process
-QUANTUM	PRIORITY_NONP.h	9;"	d
-SJF	SJF.cpp	/^SJF::SJF(Process in_prcs[], int in_n, int ctx) {$/;"	f	class:SJF
+QUANTUM	PRIORITY_NONP.h	10;"	d
+SJF	SJF.cpp	/^SJF::SJF(vector <Process*> in_prcs, int in_n, int ctx) {$/;"	f	class:SJF
 SJF	SJF.h	/^class SJF : public Algorithm{  $/;"	c
-SJF_H_	SJF.h	9;"	d
-args	scheduling.cpp	/^} args;$/;"	t	typeref:struct:p_args	file:
+SJF_H_	SJF.h	10;"	d
 arrival_time	process.h	/^      arrival_time,$/;"	m	struct:process
 burst_time	process.h	/^      burst_time,$/;"	m	struct:process
 calculateRT	FCFS.cpp	/^void FCFS::calculateRT() {$/;"	f	class:FCFS
@@ -30,46 +29,39 @@ calculateWT	SJF.cpp	/^void SJF :: calculateWT(){ $/;"	f	class:SJF
 cambios	SJF.cpp	/^int cambios = 0;$/;"	v
 cambios	SJF.h	/^        cambios = 0,$/;"	m	class:SJF
 chan	SJF.h	/^        chan;$/;"	m	class:SJF
-compareArrival	SJF.cpp	/^bool SJF::compareArrival(Process p1, Process p2) {$/;"	f	class:SJF
-compareArrival	algorithm.cpp	/^bool Algorithm::compareArrival(Process p1, Process p2) {$/;"	f	class:Algorithm
-comparePID	SJF.cpp	/^bool SJF::comparePID(Process p1, Process p2) {$/;"	f	class:SJF
-comparePID	algorithm.cpp	/^bool Algorithm::comparePID(Process p1, Process p2) {$/;"	f	class:Algorithm
-compareST	algorithm.cpp	/^bool Algorithm::compareST(Process p1, Process p2) {$/;"	f	class:Algorithm
+compareArrival	algorithm.cpp	/^bool Algorithm::compareArrival(Process *p1, Process *p2) {$/;"	f	class:Algorithm
+comparePID	algorithm.cpp	/^bool Algorithm::comparePID(Process *p1, Process *p2) {$/;"	f	class:Algorithm
+compareST	algorithm.cpp	/^bool Algorithm::compareST(Process *p1, Process *p2) {$/;"	f	class:Algorithm
 completation_time	process.h	/^      completation_time,$/;"	m	struct:process
 context_switch	algorithm.h	/^    int context_switch;$/;"	m	class:Algorithm
-context_switch	scheduling.cpp	/^  int context_switch;$/;"	m	struct:p_args	file:
+copyProcess	scheduling.cpp	/^void copyProcess(vector <Process*> th_ps, vector <Process*> *th_pd) {$/;"	f
 execute	FCFS.cpp	/^void FCFS::execute() {$/;"	f	class:FCFS
 execute	PRIORITY_NONP.cpp	/^void PRIORITY::execute() {$/;"	f	class:PRIORITY
 execute	SJF.cpp	/^void SJF :: execute()$/;"	f	class:SJF
-fcfsTHREAD	scheduling.cpp	/^void *fcfsTHREAD(void *tmp) {$/;"	f
+fcfsTHREAD	scheduling.cpp	/^void fcfsTHREAD(vector <Process*> p, int n_p, int c_s) {$/;"	f
 main	scheduling.cpp	/^int main() {$/;"	f
 nCambios	SJF.cpp	/^int nCambios[2000];$/;"	v
 nCambios	SJF.h	/^        nCambios[2000],$/;"	m	class:SJF
 n_prcs	FCFS.h	/^    int n_prcs;$/;"	m	class:FCFS
 n_prcs	PRIORITY_NONP.h	/^    int n_prcs;$/;"	m	class:PRIORITY
 n_prcs	SJF.h	/^    int n_prcs,$/;"	m	class:SJF
-n_prcs	scheduling.cpp	/^  int n_prcs;$/;"	m	struct:p_args	file:
-p_args	scheduling.cpp	/^typedef struct p_args {$/;"	s	file:
 p_id	process.h	/^  int p_id,$/;"	m	struct:process
-prcs	FCFS.h	/^    Process *prcs;$/;"	m	class:FCFS
-prcs	PRIORITY_NONP.h	/^    Process *prcs;$/;"	m	class:PRIORITY
-prcs	SJF.h	/^    Process *prcs;$/;"	m	class:SJF
+prcs	FCFS.h	/^    vector <Process*> prcs;$/;"	m	class:FCFS
+prcs	PRIORITY_NONP.h	/^    vector <Process*> prcs;$/;"	m	class:PRIORITY
+prcs	SJF.h	/^    vector <Process*> prcs;$/;"	m	class:SJF
 printGantt	algorithm.cpp	/^void Algorithm::printGantt(Process p[], int n_prcs) {$/;"	f	class:Algorithm
-printGanttSJF	SJF.cpp	/^void SJF::printGanttSJF(Process p[], int n_prcs) {$/;"	f	class:SJF
+printGanttSJF	SJF.cpp	/^void SJF::printGanttSJF(vector <Process*> p, int n_prcs) {$/;"	f	class:SJF
+printGanttV2	algorithm.cpp	/^void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {$/;"	f	class:Algorithm
 priority	process.h	/^      priority;$/;"	m	struct:process
-priorityTHREAD	scheduling.cpp	/^void *priorityTHREAD(void *tmp) {$/;"	f
+priorityTHREAD	scheduling.cpp	/^void priorityTHREAD(vector <Process *> p, int n_p, int c_s) {$/;"	f
 process	process.h	/^struct process {$/;"	s
-processes	scheduling.cpp	/^  Process *processes;$/;"	m	struct:p_args	file:
 response_time	process.h	/^      response_time,$/;"	m	struct:process
-sjfTHREAD	scheduling.cpp	/^void *sjfTHREAD(void *tmp) {$/;"	f
+sjfTHREAD	scheduling.cpp	/^void sjfTHREAD(vector <Process*> p, int n_p, int c_s) {$/;"	f
 start_time	process.h	/^      start_time,$/;"	m	struct:process
 tCambios	SJF.cpp	/^int tCambios[2000];$/;"	v
 tCambios	SJF.h	/^        tCambios[2000],$/;"	m	class:SJF
-total_response_time	SJF.h	/^        total_response_time = 0,$/;"	m	class:SJF
 total_response_time	algorithm.h	/^        total_response_time = 0;$/;"	m	class:Algorithm
-total_turnaround_time	SJF.h	/^        total_turnaround_time = 0,$/;"	m	class:SJF
 total_turnaround_time	algorithm.h	/^    double total_turnaround_time = 0,$/;"	m	class:Algorithm
-total_waiting_time	SJF.h	/^        total_waiting_time = 0,$/;"	m	class:SJF
 total_waiting_time	algorithm.h	/^        total_waiting_time = 0,$/;"	m	class:Algorithm
 turnaround_time	process.h	/^      turnaround_time,$/;"	m	struct:process
 waiting_time	process.h	/^      waiting_time,$/;"	m	struct:process
