@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 #include "process.h"
 
 #ifndef ALGORITHM_H_
@@ -12,11 +13,13 @@ class Algorithm {
     int context_switch;
     double total_turnaround_time = 0,
         total_waiting_time = 0,
-        total_response_time = 0;
+        total_response_time = 0,
+        total_idle_time = 0;
 
   public:
     void printGantt(Process p[], int n_prcs);
     void printGanttV2(vector <Process*> p, int n_prcs);
+    void writeData(vector <Process*> p, int n_prcs, string file_name);
     static bool compareArrival(Process *p1, Process *p2);
     static bool comparePID(Process *p1, Process *p2);
     static bool comparePriority(Process *p1, Process *p2);

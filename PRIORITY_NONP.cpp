@@ -10,7 +10,7 @@ PRIORITY::PRIORITY(vector <Process*> in_prcs, int in_n, int c_s) {
 }
 
 void PRIORITY::execute() {
-  int i, completed = 0, current_time = 0, current_pid, max_priority;
+  int i, completed = 0, current_time = 0, current_pid, max_priority, prev = 0;
 
   printf("\n======== executing PRIORITY ========\n");
 
@@ -51,8 +51,10 @@ void PRIORITY::execute() {
       // RESPONSE
       prcs[current_pid]->response_time = prcs[current_pid]->start_time - prcs[current_pid]->arrival_time;
       total_response_time += prcs[current_pid]->response_time;
+      total_idle_time += prcs[current_pid]->start_time - prev;
 
       current_time = prcs[current_pid]->completation_time;
+      prev = current_time;
       completed++;
     }
     else {
@@ -84,5 +86,7 @@ void PRIORITY::execute() {
   printf("\nAVG TURNAROUND TIME: %.2f\n",total_turnaround_time/n_prcs);
   printf("AVG WAITING TIME: %.2f\n",total_waiting_time/n_prcs);
   printf("AVG RESPONSE TIME: %.2f\n",total_response_time/n_prcs);
+  printf("CPU UTILIZATION: %.0f%%\n", ((prcs[n_prcs-1]->completation_time - total_idle_time) / prcs[n_prcs-1]->completation_time)*100);
 
+  writeData(prcs, n_prcs, "PRIORITY"); 
 }

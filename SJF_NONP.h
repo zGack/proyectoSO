@@ -7,7 +7,6 @@
 
 #ifndef SJF2_H_
 #define SJF2_H_
-#define QUANTUM 1
 
 using namespace std;
 

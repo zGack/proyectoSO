@@ -77,7 +77,7 @@ void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {
   printf("PID\tSTART\tCOMPLETATION\n");
 
   for (int i = 0; i < n_prcs; i++) {
-    if (p[i]->start_time != prev_ct) {
+    if (p[i]->start_time != prev_ct ) {
       printf("X\t%d\t%d\n", prev_ct, p[i]->start_time);
     }
     printf("%d\t",p[i]->p_id);
@@ -85,6 +85,30 @@ void Algorithm::printGanttV2(vector <Process*> p, int n_prcs) {
     printf("%d\n",p[i]->completation_time);
     prev_ct = p[i]->completation_time + context_switch;
   }
+}
+
+void Algorithm::writeData(vector <Process*> prcs, int n_prcs, string file_name) {
+  ofstream text_file;
+
+  text_file.open(file_name + ".txt");
+  text_file << file_name << endl;
+
+  text_file << "\nPID\t"<<"PRI\t"<<"AT\t"<<"BT\t"<<"ST\t"<<"CT\t"<<"TAT\t"<<"WT\t"<<"RT\t"<<"\n"<<endl;
+
+  for(int i = 0; i < n_prcs; i++) {
+    text_file << prcs[i]->p_id<<"\t";
+    text_file << prcs[i]->priority<<"\t";
+    text_file << prcs[i]->arrival_time;
+    text_file << "\t"<<prcs[i]->burst_time;
+    text_file << "\t"<<prcs[i]->start_time;
+    text_file << "\t"<<prcs[i]->completation_time;
+    text_file << "\t"<<prcs[i]->turnaround_time;
+    text_file << "\t"<<prcs[i]->waiting_time;
+    text_file << "\t"<<prcs[i]->response_time<<"\t"<<"\n"<<endl;
+  }
+
+  text_file.close();
+  
 }
 
 bool Algorithm::compareArrival(Process *p1, Process *p2) {

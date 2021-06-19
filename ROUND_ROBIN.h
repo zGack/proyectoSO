@@ -2,21 +2,24 @@
 #include <queue>
 #include <algorithm>
 #include <vector>
+#include <queue>
+#include <cstring>
 #include "process.h"
 #include "algorithm.h"
 
-#ifndef PRIORITY_H_
-#define PRIORITY_H_
+#ifndef ROUNDR_H_
+#define ROUNDR_H_
+#define QUANTUM 4
 
 using namespace std;
 
-class PRIORITY : public Algorithm{
+class ROUNDR : public Algorithm {
   protected:
     vector <Process*> prcs;
     int n_prcs;
 
   public:
-    PRIORITY(vector <Process*> prcs, int n_prcs, int c_s);
+    ROUNDR(vector <Process*> prcs, int n_prcs, int c_s);
     void execute();
     void calculateWT();
     void calculateTAT();

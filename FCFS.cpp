@@ -40,6 +40,9 @@ void FCFS::execute() {
   printf("\nAVG TURNAROUND TIME: %.2f\n",total_turnaround_time/n_prcs);
   printf("AVG WAITING TIME: %.2f\n",total_waiting_time/n_prcs);
   printf("AVG RESPONSE TIME: %.2f\n",total_response_time/n_prcs);
+  printf("CPU UTILIZATION: %.0f%%\n", ((prcs[n_prcs-1]->completation_time - total_idle_time) / prcs[n_prcs-1]->completation_time)*100);
+
+  writeData(prcs, n_prcs, "FCFS"); 
   
 }
 
@@ -56,6 +59,7 @@ void FCFS::calculateTAT() {
     prcs[i]->completation_time = prcs[i]->start_time + prcs[i]->burst_time;
     prcs[i]->turnaround_time = prcs[i]->completation_time - prcs[i]->arrival_time;
     total_turnaround_time += prcs[i]->turnaround_time;
+    total_idle_time += (i == 0)?(prcs[i]->arrival_time):(prcs[i]->start_time - prcs[i-1]->completation_time);
   }
 }
 
