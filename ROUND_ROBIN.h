@@ -9,7 +9,6 @@
 
 #ifndef ROUNDR_H_
 #define ROUNDR_H_
-#define QUANTUM 4
 
 using namespace std;
 

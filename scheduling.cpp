@@ -70,8 +70,6 @@ void selectAlgorithm(int opt, vector <Process*> p_base, int n_prcs, int context_
       threads[2].join();
       break;
     case 4:
-      int q;
-      
       copyProcess(p_base, &p_th4);
       threads[3] = thread(roundrTHREAD, p_th4, n_prcs, context_switch);
       threads[3].join();

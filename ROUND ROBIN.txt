@@ -1,0 +1,12 @@
+ROUND ROBIN
+
+PID	PRI	AT	BT	ST	CT	TAT	WT	RT	
+
+1	0	0	8	0	20	20	12	0	
+
+2	0	1	4	4	8	7	3	3	
+
+3	0	2	9	8	26	24	15	6	
+
+4	0	3	5	12	25	22	17	9	
+
